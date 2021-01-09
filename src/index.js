@@ -4,9 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// import drizzle functions and contract artifact
+import { Drizzle, generateStore } from "@drizzle/store";
+import JurStatus from "./build/contracts/JurStatus.json";
+
+// let drizzle know what contracts we want
+const options = { contracts: [JurStatus] };
+
+// setup the drizzle store and drizzle
+const drizzleStore = generateStore(options);
+
+const drizzle = new Drizzle(options, drizzleStore);
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App drizzle={drizzle} />
   </React.StrictMode>,
   document.getElementById('root')
 );
