@@ -1,0 +1,36 @@
+.add-container {
+    margin-top: 8px;
+    margin-bottom: 9px;
+  
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+
+}
+  
+  .add-card {
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 5px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+
+    flex: 1;
+  }
+  
+  .add-card-plus {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .add-card-plus div {
+    font-size: 30px;
+    border: solid;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    /* display: inline-block; */
+    text-align: center;  
+  }
+  
