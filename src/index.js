@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 // import drizzle functions and contract artifact
 import { Drizzle, generateStore } from "@drizzle/store";
-import JurStatus from "./build/contracts/JurStatus.json";
+import JurStatus from "./contracts/JurStatus.json";
 
 // let drizzle know what contracts we want
 const options = { contracts: [JurStatus] };
