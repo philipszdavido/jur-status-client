@@ -1,0 +1,14 @@
+@media(max-width: 900px) {
+    .main {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+  
+    .add-container {
+      width: 90%;
+    }
+  
+    .jurcontainer {
+      width: 90%;
+    }
+  }
