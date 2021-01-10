@@ -9,7 +9,16 @@ import { Drizzle, generateStore } from "@drizzle/store";
 import JurStatus from "./contracts/JurStatus.json";
 
 // let drizzle know what contracts we want
-const options = { contracts: [JurStatus] };
+const options = { 
+  contracts: [JurStatus],
+  web3: {
+    vechain: true,
+    fallback: {
+      type: "ws",
+      url: "ws://127.0.0.1:9545"
+    }
+  } 
+}
 
 // setup the drizzle store and drizzle
 const drizzleStore = generateStore(options);
