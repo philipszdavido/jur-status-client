@@ -1,0 +1,31 @@
+.jurcontainer {
+    display: flex;
+    margin-top: 9px;
+
+    width: 900px;
+}
+
+.jurcontainer-statuses {
+    flex: 2;
+    margin-right: 2px;
+}
+
+.jurcontainer-statuses-header {
+    background-color: lightgrey;
+    color: gray;
+    padding: 5px;
+    font-size: 1.6em;
+}
+
+.jurcontainer-statustypes {
+    margin-left: 2px;
+    flex: 1;
+}
+
+.jurcontainer-statustypes-header {
+    background-color: lightgrey;
+    color: gray;
+    padding: 5px;
+    font-size: 1.6em;
+    white-space: nowrap;
+}
