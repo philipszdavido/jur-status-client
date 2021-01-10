@@ -20,7 +20,6 @@ const options = {
   } 
 }
 
-// setup the drizzle store and drizzle
 const drizzleStore = generateStore(options);
 
 const drizzle = new Drizzle(options, drizzleStore);
