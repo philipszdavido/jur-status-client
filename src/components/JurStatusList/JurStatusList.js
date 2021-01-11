@@ -1,9 +1,9 @@
 import JurStatus from "./../JurStatus/JurStatus.js"
 
-function JurStatusList({JurStatuses = []}) {
+function JurStatusList({jurStatus = []}) {
     return (
         <div>
-            {JurStatuses.map((jurStatus, i) => <JurStatus key={i} JurStatus={jurStatus} />)}
+            {jurStatus.map((_jurStatus, i) => <JurStatus key={i} JurStatus={_jurStatus} />)}
         </div>
     )
 }
