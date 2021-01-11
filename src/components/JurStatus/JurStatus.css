@@ -20,6 +20,7 @@
 
 .jurstatus-isactive {
     flex: 1;
+    text-transform: uppercase;
 }
 
 .jurstatus-statustype {
