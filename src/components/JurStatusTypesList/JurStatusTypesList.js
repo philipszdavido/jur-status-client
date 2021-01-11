@@ -1,7 +1,12 @@
-function JurStatusTypesList() {
+import JurStatusTypes from "./../JurStatusTypes/JurStatusTypes.js"
+
+function JurStatusTypesList({ jurStatusTypes = [] }) {
     return (
-        <section className="jurstatuslist">
-        </section>
+        <div>
+            {
+                jurStatusTypes.map((jurS, i) => <JurStatusTypes key={i} jurStatusTypes={jurS} />)
+            }
+        </div>
     )
 }
 
