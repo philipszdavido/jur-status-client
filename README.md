@@ -18,7 +18,7 @@ yarn install
 npm i
 ```
 
-__4__ copy the contract files in `sm-contract/build/contracts` and paste it here.
+__4__ copy the `contracts` folder in `sm-contract/build/contracts` and paste it in `src/` here.
 
 __5__ Run `yarn start` or `npm run start`
 
