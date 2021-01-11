@@ -24,4 +24,5 @@
 
 .jurstatus-statustype {
     flex: 1;
+    text-transform: uppercase;
 }
