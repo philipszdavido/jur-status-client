@@ -32,9 +32,10 @@ function AddStatusModal({ drizzle, drizzleState, visible, setVisible }) {
 
     const getStatusTypes = async () => {
         const contract = await drizzle.contracts.JurStatus;
-        
-        const _statusTypes = await contract.methods.getStatusTypes().call({ from: drizzleState.accounts[0] });
-        setStatusTypes(_statusTypes)
+        if(contract) {
+            const _statusTypes = await contract.methods.getStatusTypes().call({ from: drizzleState.accounts[0] });
+            setStatusTypes(_statusTypes)
+        }
     }
 
     function clickHandler(i) {
