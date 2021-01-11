@@ -5,10 +5,11 @@
     }
   
     .add-container {
-      width: 90%;
+      width: 90% !important;
     }
   
     .jurcontainer {
-      width: 90%;
+      width: 90% !important;
+      flex-direction: column;
     }
   }
