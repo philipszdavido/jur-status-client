@@ -25,7 +25,6 @@ function JurContainer({ loadingStore, drizzle, drizzleState }){
             const _statusTypes = await contract.methods.getStatusTypes().call({ from: drizzleState.accounts[0] });
 
             const jurStatuses = await contract.methods.getStatusList().call({ from: drizzleState.accounts[0] });
-            console.log(jurStatuses)
             const _jurStatuses = []
 
             for (var i = 1; i <= jurStatuses.length; i++) {
@@ -34,7 +33,6 @@ function JurContainer({ loadingStore, drizzle, drizzleState }){
                 _jurStatus.address = jurStatuses[i - 1];
                 _jurStatuses.push(_jurStatus)
             }
-            console.log(_jurStatuses)
             setJurStatusOpts({
                 statusTypes: _statusTypes,
                 jurStatus: _jurStatuses
