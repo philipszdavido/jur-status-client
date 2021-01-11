@@ -6,11 +6,11 @@ This is the frontend of the JurStatus contract did at this [repo](https://github
 
 ## How to run
 
-__1__ clone https://github.com/philipszdavido/jur-status-smart-contract repo and follow its instructions on its README.md to setup.
+__1__ - clone https://github.com/philipszdavido/jur-status-smart-contract repo and follow its instructions on its README.md to setup.
 
-__2__ Pull or clone this repo
+__2__ - Pull or clone this repo
 
-__3__ cd into this repo and Install the dependencies
+__3__ - cd into this repo and Install the dependencies
 
 ```sh
 cd frontend
@@ -18,8 +18,8 @@ yarn install
 npm i
 ```
 
-__4__ copy the `contracts` folder in `sm-contract/build/contracts` and paste it in `src/` here.
+__4__ - copy the `contracts` folder in `sm-contract/build/contracts` and paste it in `src/` here.
 
-__5__ Run `yarn start` or `npm run start`
+__5__ - Run `yarn start` or `npm run start`
 
-__6__ Navigate to `localhost:3000` in your browser.
+__6__ - Navigate to `localhost:3000` in your browser.
