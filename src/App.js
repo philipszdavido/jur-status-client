@@ -11,7 +11,6 @@ function App(props) {
   })
   React.useEffect(() => {
       const unsubscribe = drizzle.store.subscribe(() => {
-        console.log("subsc")
           // every time the store updates, grab the state from drizzle
           const drizzleState = drizzle.store.getState();
     
