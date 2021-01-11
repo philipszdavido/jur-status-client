@@ -1,68 +1,77 @@
 import React from "react"
 import "./JurContainer.css"
 import JurStatusList from "../../components/JurStatusList/JurStatusList.js"
-import JurStatusTypesList from "../../components/JurStatusList/JurStatusList.js"
+import JurStatusTypesList from "../../components/JurStatusTypesList/JurStatusTypesList.js"
 import Spinner from "./../../components/Spinner/Spinner.js"
 
-function JurContainer(props) {
-    const [{ loading, drizzleState }, setState] = React.useState({
-        loading: true,
-        drizzleState: null
+function JurContainer({ loadingStore, drizzle, drizzleState }){
+    //console.log("drizzleState, drizzle:", drizzleState, drizzle)
+
+    const [ {
+        jurStatus,
+        statusTypes
+    }, setJurStatusOpts] = React.useState({
+        statusTypes: [],
+        jurStatus: []
     })
-    var unsubscribe
 
     React.useEffect(() => {
-        const { drizzle } = props;
+        getJurStatusList()
+    }, [drizzleState]/* HERE */)
 
-        // subscribe to changes in the store
-        unsubscribe = drizzle.store.subscribe(() => {
-    
-          // every time the store updates, grab the state from drizzle
-          const drizzleState = drizzle.store.getState();
-    
-          // check to see if it's ready, if so, update local component state
-          if (drizzleState.drizzleStatus.initialized) {
-            setState({ loading: false, drizzleState });
-
-            const contract = drizzle.contracts.JurStatus;
-            console.log(contract)
-            // let drizzle know we want to watch the `myString` method
-            // const dataKey = contract.methods["myString"].cacheCall();
+    const getJurStatusList = async () => {
+        //console.log(!drizzleState, !drizzleState?.drizzleStatus?.initialized)
+        if(drizzleState?.drizzleStatus?.initialized) {
+            const contract = await drizzle.contracts.JurStatus;
         
-            // save the `dataKey` to local component state for later reference
-            // this.setState({ dataKey });            
-          }
-        });
-        return () => unsubscribe()
-    })
+            const _statusTypes = await contract.methods.getStatusTypes().call({ from: drizzleState.accounts[0] });
+            console.log(_statusTypes)
+            // setStatusTypes(_statusTypes)
+
+            const jurStatuses = await contract.methods.getStatusList().call({ from: drizzleState.accounts[0] });
+            console.log(jurStatuses)
+            const _jurStatuses = []
+
+            for (var i = 1; i <= jurStatuses.length; i++) {
+                let _jurStatus = await contract.methods.getJurStatusInfo(jurStatuses[i - 1])
+                .call({from: drizzleState.accounts[0]})
+                //console.log(_jurStatus)
+                _jurStatus.address = jurStatuses[i - 1];
+                _jurStatuses.push(_jurStatus)
+                // setJurStatus(_j => [..._j, _jurStatus]);
+            }
+            console.log(_jurStatuses)
+            setJurStatusOpts({
+                statusTypes: _statusTypes,
+                jurStatus: _jurStatuses
+            })
+        }
+    }
 
     return (
-        <section className="jurcontainer">
-            <div className="jurcontainer-statuses">
-                <div className="jurcontainer-statuses-header">Jur Statuses</div>
-                <div>
-                    {loading? <Spinner visible={loading} /> : 
-                        <JurStatusList JurStatuses={[{
-                            activationTime: 12,
-                            isActive: true,
-                            statusType: "Type-O"
-                        },{
-                            activationTime: new Date().toLocaleTimeString(),
-                            isActive: false,
-                            statusType: "Type-X"
-                        }                    
-                        ]} />
-                    }
+            <section className="jurcontainer">
+                <div className="jurcontainer-statuses">
+                    <div className="jurcontainer-statuses-header">Jur Statuses</div>
+                    <div>
+                        {
+                            loadingStore ? 
+                                <Spinner visible={loadingStore} /> :
+                                <JurStatusList jurStatus={jurStatus} />
+                        }
+                    </div>
                 </div>
-            </div>
-            <div className="jurcontainer-statustypes">
-                <div className="jurcontainer-statustypes-header">Jur Status Types</div>
-                <div>
-                    <JurStatusTypesList JurStatusTypes={[]} />
+                <div className="jurcontainer-statustypes">
+                    <div className="jurcontainer-statustypes-header">Jur Status Types</div>
+                    <div>
+                        {
+                                loadingStore ? 
+                                    <Spinner visible={loadingStore} /> :
+                                    <JurStatusTypesList jurStatusTypes={statusTypes} />
+                        }
+                    </div>
                 </div>
-            </div>
-        </section>
-    )
+            </section>
+        )
 }
 
 export default JurContainer
