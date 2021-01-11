@@ -5,7 +5,6 @@ import JurStatusTypesList from "../../components/JurStatusTypesList/JurStatusTyp
 import Spinner from "./../../components/Spinner/Spinner.js"
 
 function JurContainer({ loadingStore, drizzle, drizzleState }){
-    //console.log("drizzleState, drizzle:", drizzleState, drizzle)
 
     const [ {
         jurStatus,
@@ -20,13 +19,10 @@ function JurContainer({ loadingStore, drizzle, drizzleState }){
     }, [drizzleState]/* HERE */)
 
     const getJurStatusList = async () => {
-        //console.log(!drizzleState, !drizzleState?.drizzleStatus?.initialized)
         if(drizzleState?.drizzleStatus?.initialized) {
             const contract = await drizzle.contracts.JurStatus;
         
             const _statusTypes = await contract.methods.getStatusTypes().call({ from: drizzleState.accounts[0] });
-            console.log(_statusTypes)
-            // setStatusTypes(_statusTypes)
 
             const jurStatuses = await contract.methods.getStatusList().call({ from: drizzleState.accounts[0] });
             console.log(jurStatuses)
@@ -35,10 +31,8 @@ function JurContainer({ loadingStore, drizzle, drizzleState }){
             for (var i = 1; i <= jurStatuses.length; i++) {
                 let _jurStatus = await contract.methods.getJurStatusInfo(jurStatuses[i - 1])
                 .call({from: drizzleState.accounts[0]})
-                //console.log(_jurStatus)
                 _jurStatus.address = jurStatuses[i - 1];
                 _jurStatuses.push(_jurStatus)
-                // setJurStatus(_j => [..._j, _jurStatus]);
             }
             console.log(_jurStatuses)
             setJurStatusOpts({
