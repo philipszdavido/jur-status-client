@@ -1,3 +1,4 @@
+import React from "react"
 import AddContainer from "./AddContainer/AddContainer.js"
 import JurContainer from "./JurContainer/JurContainer.js"
 
