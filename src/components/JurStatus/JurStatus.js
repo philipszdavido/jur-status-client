@@ -1,7 +1,7 @@
 import "./JurStatus.css"
 
-function JurStatus({JurStatus}) {
-    const { activationTime, isActive, statusType } = JurStatus
+function JurStatus({JurStatus = {}}) {
+    const { activationTime = null, isActive = null, statusType="" } = JurStatus
     return (
         <div className="jurstatus">
             <div className="jurstatus-activationtime">
