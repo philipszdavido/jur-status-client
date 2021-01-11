@@ -11,10 +11,11 @@
 }
 
 .jurcontainer-statuses-header {
-    background-color: lightgrey;
-    color: gray;
+    background-color: blueviolet;
+    color: white;
     padding: 5px;
     font-size: 1.6em;
+    white-space: nowrap;
 }
 
 .jurcontainer-statustypes {
@@ -23,8 +24,8 @@
 }
 
 .jurcontainer-statustypes-header {
-    background-color: lightgrey;
-    color: gray;
+    background-color: blueviolet;
+    color: white;
     padding: 5px;
     font-size: 1.6em;
     white-space: nowrap;
